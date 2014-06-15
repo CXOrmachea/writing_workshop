@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140615222642) do
+ActiveRecord::Schema.define(:version => 20140615234842) do
+
+  create_table "paragraphs", :force => true do |t|
+    t.integer  "story_id"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "paragraphs", ["story_id"], :name => "index_paragraphs_on_story_id"
 
   create_table "readings", :force => true do |t|
     t.text     "link"
