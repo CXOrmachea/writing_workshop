@@ -1,0 +1,7 @@
+<h1>Post a new reading</h1>
+
+<%= form_for @reading do |f| %>
+  <%= f.label :link %>
+  <%= f.text_field :link %>
+  <%= f.submit "Submit" %>
+<% end %>
