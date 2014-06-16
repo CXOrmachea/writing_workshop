@@ -14,7 +14,7 @@ class ReadingsController < ApplicationController
 
     if @reading
       flash[:notice] = "Reading added."
-      redirect_to readings_path
+      redirect_to root_path
     else
       flash[:error] = "Reading didn't add for some reason. Please try again."
       render :new
