@@ -35,6 +35,8 @@ gem 'acts_as_votable'
 gem 'acts_as_commentable', '3.0.1'
 gem 'foundation-rails'
 
+ruby '1.9.3'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
