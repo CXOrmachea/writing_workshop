@@ -3,4 +3,5 @@ class Paragraph < ActiveRecord::Base
   attr_accessible :body
 
   acts_as_votable
+  acts_as_commentable
 end
