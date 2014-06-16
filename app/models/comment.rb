@@ -12,4 +12,5 @@ class Comment < ActiveRecord::Base
 
   # NOTE: Comments belong to a user
   belongs_to :user
+  attr_accessible :comment
 end

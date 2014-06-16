@@ -3,6 +3,8 @@ class Story < ActiveRecord::Base
   attr_accessible :body, :title
   has_many :paragraphs
 
+  acts_as_commentable
+
 
   def paragraph_it
     text = self.body

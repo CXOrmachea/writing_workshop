@@ -1,4 +1,6 @@
 class ReadingsController < ApplicationController
+  before_filter :check_user
+
   def index
     @readings = Reading.all
   end
@@ -20,5 +22,15 @@ class ReadingsController < ApplicationController
   end
 
   def edit
+  end
+
+  
+  def check_user
+    if current_user
+      return true
+    else
+      flash[:notice] = "Please login"
+      redirect_to new_user_session_path
+    end
   end
 end

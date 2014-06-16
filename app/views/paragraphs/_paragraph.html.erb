@@ -13,4 +13,16 @@
     (<%= paragraph.votes_for.count %>)
   <% end %>
 
+  <% if paragraph.comments.count > 0 %>
+    <%= render partial: "paragraphs/comment", collection: paragraph.comments %>
+  <% end %>
+
+  <% if current_user %>
+    <%= form_for @comment, url: paragraph_comment_path(paragraph) do |f| %>
+      <%= f.label :comment %>
+      <%= f.text_area :comment %>
+      <%= f.submit "Submit" %>
+    <% end %>
+  <% end %>
+
 </p>

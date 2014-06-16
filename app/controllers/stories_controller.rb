@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
   
+  before_filter :check_user
 
   def index
     @stories = Story.all
@@ -8,6 +9,7 @@ class StoriesController < ApplicationController
   def show
     @story = Story.find(params[:id])
     @paragraphs = @story.paragraphs
+    @comment = Comment.new
   end
 
   def new
@@ -40,6 +42,16 @@ class StoriesController < ApplicationController
       flash[:notice] = "Story updated."
     else
       flash[:error] = "Story didn't update for some reason. Please try again."
+    end
+  end
+
+
+  def check_user
+    if current_user
+      return true
+    else
+      flash[:notice] = "Please login"
+      redirect_to new_user_session_path
     end
   end
 end

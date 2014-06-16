@@ -14,6 +14,7 @@ WritingWorkshop::Application.routes.draw do
   resources :paragraphs, only: [:index] do
     post 'like'
     post 'unlike'
+    post 'comment'
   end
 
   
