@@ -7,6 +7,7 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
+    @paragraphs = @story.paragraphs
   end
 
   def new
@@ -18,6 +19,7 @@ class StoriesController < ApplicationController
 
     if @story
       flash[:notice] = "Story saved."
+      @story.paragraph_it
       redirect_to @story
     else
       flash[:error] = "Story didn't save for some reason. Please try again."
