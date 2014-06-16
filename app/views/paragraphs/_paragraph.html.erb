@@ -1,1 +1,7 @@
 <p><%= paragraph.body %></p>
+<p>
+  <%= link_to "Like", paragraph_like_path(paragraph), method: :post %> 
+  <% if paragraph.votes_for.count > 0 %>
+    (<%= paragraph.votes_for.count %>)
+  <% end %>
+</p>

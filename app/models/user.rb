@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   has_many :stories
   has_many :readings
 
+  acts_as_voter
+
 end

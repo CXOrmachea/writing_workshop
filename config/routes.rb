@@ -2,7 +2,6 @@ WritingWorkshop::Application.routes.draw do
 
 
 
-  get "paragraphs/index"
 
   devise_for :users
 
@@ -11,6 +10,10 @@ WritingWorkshop::Application.routes.draw do
   resources :stories
 
   resources :readings, except: [:show]
+
+  resources :paragraphs, only: [:index] do
+    post 'like'
+  end
 
   
   # The priority is based upon order of creation:
