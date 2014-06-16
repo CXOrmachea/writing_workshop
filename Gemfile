@@ -13,7 +13,7 @@ group :development do
 end
 
 group :production do
-  # gem 'pg'
+  gem 'pg'
 end
 
 
@@ -33,6 +33,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'acts_as_votable'
 gem 'acts_as_commentable', '3.0.1'
+gem 'foundation-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -1,28 +1,37 @@
-<p><%= paragraph.body %></p>
+<div class="row">
 
-<p>
-  <!-- like/unlike button -->
-  <% if current_user.voted_for? paragraph %>
-    <%= link_to "Unlike", paragraph_unlike_path(paragraph), method: :post %>
-  <% else %>
-    <%= link_to "Like", paragraph_like_path(paragraph), method: :post %> 
-  <% end %>
+  <div class="small-6 large-7  columns">
+    <p><%= paragraph.body %></p>
+      <!-- like/unlike button -->
+  </div>
 
-  <!-- like count -->
-  <% if paragraph.votes_for.count > 0 %>
-    (<%= paragraph.votes_for.count %>)
-  <% end %>
-
-  <% if paragraph.comments.count > 0 %>
-    <%= render partial: "paragraphs/comment", collection: paragraph.comments %>
-  <% end %>
-
-  <% if current_user %>
-    <%= form_for @comment, url: paragraph_comment_path(paragraph) do |f| %>
-      <%= f.label :comment %>
-      <%= f.text_area :comment %>
-      <%= f.submit "Submit" %>
+  <div class="small-6 large-4 large-offset-1 columns">
+    <% if paragraph.comments.count > 0 %>
+      <%= render partial: "paragraphs/comment", collection: paragraph.comments %>
     <% end %>
-  <% end %>
 
-</p>
+    <% if current_user %>
+      <%= form_for @comment, url: paragraph_comment_path(paragraph) do |f| %>
+        <%= f.text_area :comment, rows: "8", placeholder: "Add comment" %>
+        <%= f.submit "Submit", class: "button tiny" %>
+      <% end %>
+    <% end %>
+
+    <% if current_user.voted_for? paragraph %>
+          <%= link_to "Unlike", paragraph_unlike_path(paragraph), method: :post %>
+        <% else %>
+          <%= link_to "Like", paragraph_like_path(paragraph), method: :post %> 
+        <% end %>
+
+      <!-- like count -->
+        <% if paragraph.votes_for.count > 0 %>
+          (<%= paragraph.votes_for.count %>)
+        <% end %>
+  </div>
+
+</div>
+
+
+
+
+

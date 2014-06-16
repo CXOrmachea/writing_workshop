@@ -1,10 +1,10 @@
-<h1>Harvard School of Vengeance</h1>
+<div class="row">
+  <div class="large-12 columns">
+    <h3>Stories</h3>
+      <%= render @stories %>
+    <h3>Required Reading</h3>
+      <%= link_to "New Reading", new_reading_path %>
+      <%= render @readings %>
+  </div>
+</div>
 
-<h3>Stories</h3>
-
-<%= link_to "New Story", new_story_path %>
-<%= render @stories %>
-
-<h3>Required Reading</h3>
-<%= link_to "New Reading", new_reading_path %>
-<%= render @readings %>
