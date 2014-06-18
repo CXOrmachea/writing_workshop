@@ -1,41 +1,30 @@
 <div class="row">
 
   <div class="small-1 large-1 columns">
-    <% if current_user.voted_for? paragraph %>
-        <%= link_to "Unlike", paragraph_unlike_path(paragraph), method: :post %>
+    <div id="<%= paragraph.id %>-like">
+      <% if current_user.voted_for? paragraph %>
+      <!-- the ajax renders these partials also -->
+      <%= render partial: "paragraphs/unlike", locals: { paragraph: paragraph } %>
       <% else %>
-        <%= link_to "Like", paragraph_like_path(paragraph), method: :post %> 
+      <%= render partial: "paragraphs/like", locals: { paragraph: paragraph } %>
       <% end %>
-
-    <!-- like count -->
-    <% if paragraph.votes_for.count > 0 %>
-      (<%= paragraph.votes_for.count %>)
-    <% end %>
+    </div>
   </div>
 
   <div class="small-6 large-6  columns">
     <p><%= paragraph.body %></p>
-      <!-- like/unlike button -->
+    <!-- like/unlike button -->
   </div>
 
   <div class="small-5 large-4 large-offset-1 columns">
-    <% if paragraph.comments.count > 0 %>
+    <div id="<%= paragraph.id %>-comments %>">
+      <% if paragraph.comments.count > 0 %>
       <%= render partial: "paragraphs/comment", collection: paragraph.comments %>
-    <% end %>
-  
-    <% if current_user %>
-      <%= form_for @comment, url: paragraph_comment_path(paragraph) do |f| %>
-        <%= f.text_area :comment, rows: "8", placeholder: "Add comment" %>
-        <%= f.submit "Submit", class: "button tiny" %>
       <% end %>
-    <% end %>
-
-    <div id="<%= paragraph.id %>-like">
-    <% if current_user.voted_for? paragraph %>
-      <%= render partial: "paragraphs/unlike", locals: { paragraph: paragraph } %>
-    <% else %>
-      <%= render partial: "paragraphs/like", locals: { paragraph: paragraph } %>
-    <% end %>
+    </div>
+    <a href="#" class="js-show-hide" data-selector="<%= paragraph.id %>-comment-form">Add Comment</a>
+    <div class="<%= paragraph.id %>-comment-form hide">
+      <%= render partial: "paragraphs/comment_form", locals: { paragraph: paragraph } %>
     </div>
   </div>
 
