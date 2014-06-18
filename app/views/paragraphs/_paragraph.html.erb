@@ -17,7 +17,7 @@
   </div>
 
   <div class="small-5 large-4 large-offset-1 columns">
-    <div id="<%= paragraph.id %>-comments %>">
+    <div id="<%= paragraph.id %>-comments">
       <% if paragraph.comments.count > 0 %>
       <%= render partial: "paragraphs/comment", collection: paragraph.comments %>
       <% end %>

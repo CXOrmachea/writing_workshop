@@ -34,12 +34,9 @@ class ParagraphsController < ApplicationController
     @comment.user = current_user
     @comment.save
 
-    if @comment
-      flash[:notice] = "Comment created"
-      redirect_to @paragraph.story
-    else
-      flash[:error] = "Comment didn't save for some reason. Please try again."
-      redirect_to @paragraph.story
+    respond_to do |format|
+      format.html { redirect_to @paragraph.story }
+      format.js
     end
   end
 
