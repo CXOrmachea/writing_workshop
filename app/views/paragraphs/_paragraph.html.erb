@@ -17,16 +17,13 @@
       <% end %>
     <% end %>
 
+    <div id="<%= paragraph.id %>-like">
     <% if current_user.voted_for? paragraph %>
-          <%= link_to "Unlike", paragraph_unlike_path(paragraph), method: :post %>
-        <% else %>
-          <%= link_to "Like", paragraph_like_path(paragraph), method: :post %> 
-        <% end %>
-
-      <!-- like count -->
-        <% if paragraph.votes_for.count > 0 %>
-          (<%= paragraph.votes_for.count %>)
-        <% end %>
+      <%= render partial: "paragraphs/unlike", locals: { paragraph: paragraph } %>
+    <% else %>
+      <%= render partial: "paragraphs/like", locals: { paragraph: paragraph } %>
+    <% end %>
+    </div>
   </div>
 
 </div>

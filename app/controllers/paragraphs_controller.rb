@@ -11,13 +11,21 @@ class ParagraphsController < ApplicationController
   def like
     @paragraph = Paragraph.find(params[:paragraph_id])
     @paragraph.liked_by current_user
-    redirect_to @paragraph.story
+
+    respond_to do |format|
+      format.html { redirect_to @paragraph.story }
+      format.js
+    end
   end
 
   def unlike
     @paragraph = Paragraph.find(params[:paragraph_id])
     @paragraph.unliked_by current_user
-    redirect_to @paragraph.story
+
+    respond_to do |format|
+      format.html { redirect_to @paragraph.story }
+      format.js
+    end
   end
 
   def comment

@@ -1,0 +1,4 @@
+<%= link_to "Like", paragraph_like_path(paragraph), remote:true, method: :post %>
+<% if paragraph.votes_for.count > 0 %>
+  (<%= paragraph.votes_for.count %>)
+<% end %>
