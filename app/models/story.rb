@@ -10,10 +10,14 @@ class Story < ActiveRecord::Base
     text = self.body
     array = text.split("\r\n")
     array.each do |p|
-      paragraph = Paragraph.new
-      paragraph.body = p
-      paragraph.story = self
-      paragraph.save
+      if p.length > 0
+        paragraph = Paragraph.new
+        paragraph.body = p
+        paragraph.story = self
+        paragraph.save
+      end
     end
   end
+
+  
 end
