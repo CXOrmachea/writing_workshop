@@ -1,4 +1,4 @@
 <%= form_for @comment, url: paragraph_comment_path(paragraph), remote: true do |f| %>
-  <%= f.text_area :comment, rows: "4", placeholder: "Add comment" %>
+  <%= f.text_area :comment, rows: "4", placeholder: "Add comment", autofocus: true %>
   <%= f.submit "Submit", class: "button tiny" %>
 <% end %>

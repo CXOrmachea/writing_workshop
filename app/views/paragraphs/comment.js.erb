@@ -1,1 +1,2 @@
-$("#<%= @paragraph.id %>-comments").html("<%= j render partial: 'paragraphs/comment', collection: @paragraph.comments %>")
+$("#<%= @paragraph.id %>-comments").html("<%= j render partial: 'paragraphs/comment', collection: @paragraph.comments %>");
+$(".<%= @paragraph.id %>-comment-form").slideUp();
