@@ -1,2 +1,5 @@
-<p><a href="<%= reading.link.html_safe %>", target=_blank><%= reading.link %></a></p>
-<p><small>submitted by <%= reading.user.email %></small></p>
+<p><a href="<%= reading.link.html_safe %>", target=_blank><%= reading.link %></a>
+  <small>submitted by <%= reading.user.email %></small>
+</p>
+<%= render partial: "paragraphs/comment", collection: reading.comments %>
+<%= render partial: "readings/comment_form", locals: { reading: reading } %>

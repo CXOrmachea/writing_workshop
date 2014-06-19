@@ -9,7 +9,9 @@ WritingWorkshop::Application.routes.draw do
 
   resources :stories
 
-  resources :readings, except: [:show]
+  resources :readings, except: [:show] do
+    post 'comment'
+  end
 
   resources :paragraphs, only: [:index] do
     post 'like'

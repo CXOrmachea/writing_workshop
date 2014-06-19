@@ -3,6 +3,7 @@ class ReadingsController < ApplicationController
 
   def index
     @readings = Reading.all
+    @comment = Comment.new
   end
 
   def new
@@ -22,6 +23,18 @@ class ReadingsController < ApplicationController
   end
 
   def edit
+  end
+
+  def comment
+    @reading = Reading.find(params[:reading_id])
+    @comment = @reading.comments.create(params[:comment])
+    @comment.user = current_user
+    @comment.save
+
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
   end
 
   
